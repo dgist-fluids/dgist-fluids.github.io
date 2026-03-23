@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications - FSRL</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 1.15rem;
+    }
+    .nav-logo img { height: 28px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 1.05rem;
+      color: #b0b8c4;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+    }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 50%; transform: translateX(-50%);
+      width: 24px; height: 2px;
+      background: #fff;
+    }
+
+    /* ── Page Header ── */
+    .page-header {
+      padding-top: 120px;
+      padding-bottom: 40px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── Legend ── */
+    .legend {
+      text-align: right;
+      color: #8b949e;
+      font-size: 0.95rem;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    /* ── Year Section ── */
+    .year-section {
+      margin-bottom: 48px;
+    }
+    .year-section h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #58a6ff;
+      margin-bottom: 20px;
+    }
+
+    /* ── Publication Item ── */
+    .pub-item {
+      margin-bottom: 24px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .pub-item::before {
+      content: '\2022';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #8b949e;
+      font-size: 1.2rem;
+    }
+    .pub-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      margin-bottom: 4px;
+    }
+    .pub-authors {
+      font-size: 1rem;
+      color: #b0b8c4;
+      line-height: 1.6;
+    }
+    .pub-authors .author-highlight {
+      font-weight: 700;
+      color: #e6edf3;
+    }
+    .pub-authors em {
+      font-style: italic;
+    }
+    .pub-authors .pdf-link {
+      color: #8b949e;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      margin-left: 4px;
+    }
+    .pub-authors .pdf-link:hover {
+      color: #58a6ff;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: #6e7681;
+      margin-top: 80px;
+    }
+    footer .footer-text {
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 0.8rem; }
+      .page-header h1 { font-size: 2rem; }
+      .container { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+        <img src="logo.png" alt="FSRL Logo">
+        <span>FSRL</span>
+      </a>
+      <span style="color:#8b949e; font-weight:400;">Fluid &amp; Soft Robotics</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html" class="active">Publications</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="news.html">News</a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Publications</h1>
+  </div>
+
+  <div class="container">
+
+    <!-- Legend -->
+    <div class="legend">
+      Asterisks (*) refer to corresponding authors<br>
+      Daggers (&dagger;) refer to first authors
+    </div>
+
+    <!-- 2025 -->
+    <div class="year-section">
+      <h2>2025</h2>
+      <div class="pub-item">
+        <div class="pub-title">Bioinspired and biohybrid soft robots: Principles and emerging technologies,</div>
+        <div class="pub-authors">
+          Z. Chen, J. Chen, <span class="author-highlight">S. Jung</span>, H.-Y. Kim, M. L. Preti, C. Laschi, Z. Ren, M. Sitti, R. J. Full, and G.-Z. Yang*, <em>Matter</em> 8, 102045 (2025) <a href="papers/2025.04. Matter_Bioinspired and biohybrid soft robots_Principles and emerging technologies.pdf" target="_blank" class="pdf-link">[PDF]</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="year-section">
+      <h2>2024</h2>
+      <div class="pub-item">
+        <div class="pub-title">Plant-inspired soft actuators powered by water,</div>
+        <div class="pub-authors">
+          B. Shin&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, M. Choi, K. Park*, and H.-Y. Kim*, <em>MRS Bulletin</em> 49, 1-14 (2024) <a href="papers/2024.02. MRS bulletin.pdf" target="_blank" class="pdf-link">[PDF]</a>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-title">Path selection of liquid fronts in junctions of branching channels,</div>
+        <div class="pub-authors">
+          <span class="author-highlight">S. Jung&dagger;</span>, T. J. Kim&dagger;, J. H. Lee, W. Jung*, and H.-Y. Kim*, <em>Physics of Fluids</em> 36, 022107 (2024) <a href="papers/2024.02. PoF_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="year-section">
+      <h2>2023</h2>
+      <div class="pub-item">
+        <div class="pub-title">Hierarchical Capillarity-Assisted Liquid Invasion in Multilayered Paper Channels for Nanoelectrokinetic Preconcentration,</div>
+        <div class="pub-authors">
+          J. Seo&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, J. Park, H.-Y. Kim*, and S. J. Kim*, <em>Nano Letters</em> 23, 8065-8072 (2023) <a href="papers/2023.08. Nano letter_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="year-section">
+      <h2>2022</h2>
+      <div class="pub-item">
+        <div class="pub-title">Hydrogel-based strong and fast actuators by electroosmotic turgor pressure,</div>
+        <div class="pub-authors">
+          H. Na&dagger;, Y.-W. Kang&dagger;, C. S. Park&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, H.-Y. Kim*, and J.-Y. Sun*, <em>Science</em> 376, 301-307 (2022) <a href="papers/2022.04. Science_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="year-section">
+      <h2>2021</h2>
+      <div class="pub-item">
+        <div class="pub-title">Avian mud nest architecture by self-secreted saliva,</div>
+        <div class="pub-authors">
+          Y. Jung&dagger;, <span class="author-highlight">S. Jung</span>, S.-I. Lee, W. Kim*, and H.-Y. Kim*, <em>Proceedings of the National Academy of Sciences</em> 118, e2018509118 (2021) <a href="papers/2021.01. PNAS_2nd.pdf" target="_blank" class="pdf-link">[PDF]</a>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-title">Dynamics of directional soluble wicking,</div>
+        <div class="pub-authors">
+          <span class="author-highlight">S. Jung&dagger;</span>, W. Kim*, and H.-Y. Kim*, <em>Journal of Fluid Mechanics</em> 915, A58 (2021) <a href="papers/2021.03. JFM_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="year-section">
+      <h2>2020</h2>
+      <div class="pub-item">
+        <div class="pub-title">Dynamics of liquid imbibition through partially soluble porous sheets,</div>
+        <div class="pub-authors">
+          <span class="author-highlight">S. Jung&dagger;</span>, W. Kim*, and H.-Y. Kim*, <em>JMST Advances</em> 2, 53-59 (2020)
+        </div>
+      </div>
+    </div>
+
+    <!-- 2018 -->
+    <div class="year-section">
+      <h2>2018</h2>
+      <div class="pub-item">
+        <div class="pub-title">Anti-erosive mechanism of a grooved surface against impact of particle-laden flow,</div>
+        <div class="pub-authors">
+          <span class="author-highlight">S. Jung&dagger;</span>, E. Yang, W. Jung, and H.-Y. Kim*, <em>Wear</em> 406-407, 166-172 (2018) <a href="papers/2018.07. Wear_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-text">
+      Fluid &amp; Soft Robotics Laboratory<br>
+      Department of Robotics and Mechatronics Engineering<br>
+      DGIST, Korea
+    </div>
+  </footer>
+
+</body>
+</html>

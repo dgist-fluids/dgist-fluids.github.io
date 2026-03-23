@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FSRL - Fluid &amp; Soft Robotics Laboratory</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 1.15rem;
+    }
+    .nav-logo img { height: 28px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 1.05rem;
+      color: #b0b8c4;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+    }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 50%; transform: translateX(-50%);
+      width: 24px; height: 2px;
+      background: #fff;
+    }
+
+    /* ── Hero Section ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero video {
+      position: absolute;
+      top: 50%; left: 50%;
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(13,17,23,0) 60%, #0d1117 100%);
+    }
+
+    /* ── Main Content ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── Title Section ── */
+    .title-section {
+      text-align: center;
+      padding: 60px 0 48px;
+    }
+    .title-section h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 36px;
+    }
+    .tagline {
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .tagline .highlight {
+      color: #58a6ff;
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: #8b949e;
+      margin-top: 24px;
+    }
+
+    /* ── Section Headers ── */
+    .section-header {
+      font-size: 1.9rem;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      margin-bottom: 36px;
+    }
+
+    /* ── Research Themes ── */
+    .research {
+      padding: 48px 0;
+    }
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .research-card {
+      text-align: center;
+    }
+    .research-card .card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .research-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .research-card p {
+      font-size: 1.05rem;
+      color: #8b949e;
+      line-height: 1.5;
+    }
+
+    /* ── Recent Updates ── */
+    .updates {
+      padding: 48px 0;
+    }
+    .updates .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .updates .section-header span {
+      font-size: 1.2rem;
+      font-weight: 400;
+      text-decoration: none;
+      color: #8b949e;
+    }
+    .updates-divider {
+      height: 1px;
+      background: linear-gradient(to right, #58a6ff, transparent);
+      margin-top: 8px;
+    }
+    .updates-content {
+      margin-top: 24px;
+      color: #8b949e;
+      font-size: 1.1rem;
+    }
+
+    /* ── Join Us ── */
+    .join {
+      padding: 48px 0 80px;
+    }
+    .join h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 24px 0 12px;
+    }
+    .join p {
+      font-size: 1.1rem;
+      color: #b0b8c4;
+      line-height: 1.7;
+    }
+    .join .kr {
+      margin-top: 16px;
+      color: #8b949e;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: #6e7681;
+    }
+    footer .footer-text {
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 0.8rem; }
+      .title-section h1 { font-size: 1.8rem; }
+      .research-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 20px; }
+      .hero { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-logo">
+      <img src="logo.png" alt="FSRL Logo">
+      <span>FSRL</span>
+      <span style="color:#8b949e; font-weight:400;">Fluid &amp; Soft Robotics</span>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#research">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="#contact">Contact</a>
+      <a href="#news">News</a>
+    </div>
+  </nav>
+
+  <!-- Hero Video Banner -->
+  <section class="hero">
+    <img src="hero-banner.gif" alt="Hero Banner" style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;transform:translate(-50%,-50%);object-fit:cover;">
+  </section>
+
+  <div class="container">
+
+    <!-- Title Section -->
+    <section class="title-section">
+      <h1>Fluid &amp; Soft Robotics Laboratory</h1>
+      <p class="tagline"><em>Solids</em> that move <span class="highlight">fluids</span>.</p>
+      <p class="tagline"><span class="highlight">Fluids</span> that reconfigure <em>solids</em>.</p>
+      <p class="subtitle">We study the physics at the intersection of fluids and soft solids.</p>
+    </section>
+
+    <!-- Research Themes -->
+    <section class="research" id="research">
+      <h2 class="section-header"><a href="research.html" style="color:inherit;">Research Themes</a></h2>
+      <div class="research-grid">
+        <div class="research-card">
+          <img class="card-img" src="IMAGE/soft actuator_science.png" alt="Fluid-powered soft systems">
+          <h3>Fluid-powered soft systems</h3>
+          <p>Fluid transport and pressure drive deformation and functionality in soft matter</p>
+        </div>
+        <div class="research-card">
+          <img class="card-img" src="IMAGE/soluble.png" alt="Structure-driven fluid motion">
+          <h3>Structure-driven fluid motion</h3>
+          <p>Geometry and deformation of soft solids shape fluid motion and flow structures</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Updates -->
+    <section class="updates" id="news">
+      <h2 class="section-header">
+        <a href="news.html" style="color:inherit;">Recent Updates</a>
+        <span>(Last updated: Jan 2026)</span>
+      </h2>
+      <div class="updates-divider"></div>
+      <div class="updates-content">
+        <!-- Add update items here -->
+      </div>
+    </section>
+
+    <!-- Join Us -->
+    <section class="join" id="contact">
+      <h2 class="section-header">Join Us</h2>
+      <h3>Interested in joining?</h3>
+      <p>
+        If our way of thinking resonates with you, feel free to reach out for a conversation.<br>
+        Graduate and undergraduate research inquiries are welcome year-round.
+      </p>
+      <p class="kr">
+        우리의 연구가 궁금하다면 편하게 연락 주세요.<br>
+        학부 연구 참여 및 대학원 진학 상담은 상시 가능합니다.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-text">
+      Fluid &amp; Soft Robotics Laboratory<br>
+      Department of Robotics and Mechatronics Engineering<br>
+      DGIST, Korea
+    </div>
+  </footer>
+
+</body>
+</html>

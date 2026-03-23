@@ -1,0 +1,35 @@
+# Temporary and unnecessary files
+~$*
+*.egg
+*.zip
+*.tif
+*.ai
+*.dxf
+*.docx
+*.pptx
+
+# Large source folders not needed for the website
+소현 누나 사진_김현우/
+소현누나사진/
+영상/
+conceptual image/
+
+# Claude config
+.claude/
+
+# Misc
+FSRL QR code.pdf
+Naver *.pdf
+KSME*
+m_phf*
+jet*
+DI water*
+미디어1.*
+Future fluids*
+연구실 소개 문구.docx
+임용 프로필/
+hero-video.mp4
+papers/022107_1_5.0185861.pdf
+papers/2025.04.02. Matter.pdf
+papers/Representative Achievement*
+IMAGE/그림2.png

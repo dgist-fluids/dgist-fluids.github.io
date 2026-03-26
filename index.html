@@ -3,77 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FSRL - Fluid &amp; Soft Robotics Laboratory</title>
+  <title>FSRL - Fluid and Soft Robotics Laboratory</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* ── Reset & Base ── */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0a0f1a;
-      color: #e8e6e1;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    /* ── Navigation ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      height: 64px;
-      background: rgba(10, 15, 26, 0.8);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.4s ease;
-    }
-    nav.nav-hidden {
-      transform: translateY(-100%);
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 12px;
-      font-weight: 600; font-size: 1.1rem;
-      letter-spacing: 0.02em;
-    }
-    .nav-logo img { height: 30px; }
-    .nav-logo .lab-name {
-      color: #888;
-      font-weight: 400;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-    }
-    .nav-links { display: flex; gap: 36px; }
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: #888;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-      position: relative;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #e8e6e1;
-    }
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0; right: 0;
-      height: 1px;
-      background: #4a9eff;
-    }
-
     /* ── Hero Section ── */
     .hero {
       position: relative;
@@ -99,20 +35,13 @@
       );
     }
 
-    /* ── Main Content ── */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
-
     /* ── Title Section ── */
     .title-section {
       text-align: center;
       padding: 60px 0 80px;
     }
     .title-section h1 {
-      font-family: 'Instrument Serif', Georgia, serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 400;
       letter-spacing: -0.02em;
@@ -126,13 +55,11 @@
       line-height: 1.5;
     }
     .tagline em {
-      font-family: 'Instrument Serif', Georgia, serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 400;
     }
-    .tagline .highlight {
-      color: #4a9eff;
-    }
+    .tagline .highlight { color: #4a9eff; }
     .hero-line {
       opacity: 0;
       transform: translateY(24px);
@@ -151,36 +78,8 @@
       letter-spacing: 0.02em;
     }
 
-    /* ── Section Headers ── */
-    .section-header {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 400;
-      margin-bottom: 48px;
-      position: relative;
-      display: inline-block;
-    }
-    .section-header::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 40px;
-      height: 2px;
-      background: #4a9eff;
-    }
-    .section-header a {
-      color: inherit;
-      transition: color 0.3s;
-    }
-    .section-header a:hover {
-      color: #4a9eff;
-    }
-
     /* ── Research Themes ── */
-    .research {
-      padding: 80px 0;
-    }
+    .research { padding: 80px 0; }
     .research-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -192,7 +91,6 @@
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 8px;
-      padding: 0;
       overflow: hidden;
       transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
                   border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
@@ -204,171 +102,56 @@
       box-shadow: 0 8px 32px rgba(74, 158, 255, 0.08);
     }
     .research-card .card-spotlight {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-      z-index: 1;
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity 0.4s;
+      pointer-events: none; z-index: 1;
     }
-    .research-card:hover .card-spotlight {
-      opacity: 1;
-    }
-    .research-card .card-img-wrapper {
-      overflow: hidden;
-    }
+    .research-card:hover .card-spotlight { opacity: 1; }
+    .research-card .card-img-wrapper { overflow: hidden; }
     .research-card .card-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
       transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
-    .research-card:hover .card-img {
-      transform: scale(1.02);
-    }
-    .research-card .card-content {
-      padding: 24px;
-      position: relative;
-      z-index: 2;
-    }
+    .research-card:hover .card-img { transform: scale(1.02); }
+    .research-card .card-content { padding: 24px; position: relative; z-index: 2; }
     .research-card h3 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      margin-bottom: 10px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem; font-weight: 400; margin-bottom: 10px;
     }
-    .research-card p {
-      font-size: 0.9rem;
-      color: #888;
-      line-height: 1.6;
-      font-weight: 300;
-    }
+    .research-card p { font-size: 0.9rem; color: #888; line-height: 1.6; font-weight: 300; }
 
     /* ── Recent Updates ── */
-    .updates {
-      padding: 80px 0;
-    }
-    .updates .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-    }
+    .updates { padding: 80px 0; }
+    .updates .section-header { display: flex; align-items: baseline; gap: 16px; }
     .updates .section-header span {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: #666;
-      letter-spacing: 0.02em;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem;
+      font-weight: 300; color: #666; letter-spacing: 0.02em;
     }
-    .updates-divider {
-      height: 1px;
-      background: rgba(255,255,255,0.08);
-      margin-top: 8px;
-    }
-    .updates-content {
-      margin-top: 32px;
-      color: #888;
-      font-size: 0.95rem;
-    }
+    .updates-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 8px; }
+    .updates-content { margin-top: 32px; color: #888; font-size: 0.95rem; }
 
     /* ── Join Us ── */
-    .join {
-      padding: 80px 0 120px;
-      position: relative;
-    }
+    .join { padding: 80px 0 120px; }
     .join-inner {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
       border-left: 3px solid #4a9eff;
-      border-radius: 8px;
-      padding: 48px;
+      border-radius: 8px; padding: 48px;
     }
     .join h3 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin: 0 0 20px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem; font-weight: 400; margin: 0 0 20px;
     }
-    .join p {
-      font-size: 0.95rem;
-      color: #b0a99f;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-    .join .kr {
-      margin-top: 20px;
-      color: #666;
-      font-size: 0.9rem;
-    }
+    .join p { font-size: 0.95rem; color: #b0a99f; line-height: 1.8; font-weight: 300; }
+    .join .kr { margin-top: 20px; color: #666; font-size: 0.9rem; }
 
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 32px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 16px;
-    }
-    footer .footer-text {
-      text-align: right;
-      line-height: 1.7;
-      font-size: 0.8rem;
-      color: #555;
-      letter-spacing: 0.02em;
-    }
-
-    /* ── Scroll Animations ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
-                  transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .fade-in-left {
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
-                  transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .fade-in-left.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .fade-in-right {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
-                  transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .fade-in-right.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* ── Stagger children ── */
-    .stagger > *:nth-child(1) { transition-delay: 0s; }
-    .stagger > *:nth-child(2) { transition-delay: 0.1s; }
-    .stagger > *:nth-child(3) { transition-delay: 0.2s; }
-    .stagger > *:nth-child(4) { transition-delay: 0.3s; }
-
-    /* ── Responsive ── */
+    /* ── Responsive (page-specific) ── */
     @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-      .nav-links { gap: 20px; }
-      .nav-links a { font-size: 0.75rem; }
-      .nav-logo .lab-name { display: none; }
-      .container { padding: 0 1.5rem; }
       .title-section { padding: 40px 0 60px; }
       .research-grid { grid-template-columns: 1fr; }
       .hero { height: 260px; }
       .join-inner { padding: 32px 24px; }
       .research, .updates, .join { padding: 60px 0; }
-      footer { padding: 24px; }
     }
   </style>
 </head>
@@ -379,14 +162,14 @@
     <div class="nav-logo">
       <img src="logo.png" alt="FSRL Logo">
       <span>FSRL</span>
-      <span class="lab-name">Fluid &amp; Soft Robotics</span>
+      <span class="lab-name">Fluid and Soft Robotics</span>
     </div>
     <div class="nav-links">
-      <a href="#" class="active">Home</a>
-      <a href="#about">About Us</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Us</a>
       <a href="#research">Research</a>
       <a href="publications.html">Publications</a>
-      <a href="#contact">Contact</a>
+      <a href="people.html">People</a>
       <a href="#news">News</a>
     </div>
   </nav>
@@ -400,7 +183,7 @@
 
     <!-- Title Section -->
     <section class="title-section">
-      <h1 class="hero-line">Fluid &amp; Soft Robotics Laboratory</h1>
+      <h1 class="hero-line">Fluid and Soft Robotics Laboratory</h1>
       <p class="tagline hero-line"><em>Solids</em> that move <span class="highlight">fluids</span>.</p>
       <p class="tagline hero-line"><span class="highlight">Fluids</span> that reconfigure <em>solids</em>.</p>
       <p class="subtitle hero-line">We study the physics at the intersection of fluids and soft solids.</p>
@@ -440,9 +223,7 @@
         <span>(Last updated: Jan 2026)</span>
       </h2>
       <div class="updates-divider"></div>
-      <div class="updates-content">
-        <!-- Add update items here -->
-      </div>
+      <div class="updates-content"></div>
     </section>
 
     <!-- Join Us -->
@@ -466,71 +247,17 @@
   <!-- Footer -->
   <footer>
     <div class="footer-text">
-      Fluid &amp; Soft Robotics Laboratory<br>
+      Fluid and Soft Robotics Laboratory<br>
       Department of Robotics and Mechatronics Engineering<br>
       DGIST, Korea
     </div>
   </footer>
 
+  <script src="main.js"></script>
   <script>
-    // ── Hero Text Reveal ──
-    (function() {
-      const lines = document.querySelectorAll('.hero-line');
-      lines.forEach((line, i) => {
-        setTimeout(() => {
-          line.classList.add('revealed');
-        }, 300 + i * 500);
-      });
-    })();
-
-    // ── Scroll Reveal (IntersectionObserver) ──
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
-      observer.observe(el);
-    });
-
-    // ── Smart Navbar (hide on scroll down, show on scroll up) ──
-    (function() {
-      const navbar = document.getElementById('navbar');
-      let lastScroll = 0;
-      let ticking = false;
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            const currentScroll = window.scrollY;
-            if (currentScroll > lastScroll && currentScroll > 80) {
-              navbar.classList.add('nav-hidden');
-            } else {
-              navbar.classList.remove('nav-hidden');
-            }
-            lastScroll = currentScroll;
-            ticking = false;
-          });
-          ticking = true;
-        }
-      });
-    })();
-
-    // ── Research Card Spotlight Hover ──
-    document.querySelectorAll('[data-spotlight]').forEach(card => {
-      const spotlight = card.querySelector('.card-spotlight');
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(74,158,255,0.08), transparent 40%)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        spotlight.style.background = 'none';
-      });
+    // Hero Text Reveal (index-only)
+    document.querySelectorAll('.hero-line').forEach((line, i) => {
+      setTimeout(() => line.classList.add('revealed'), 300 + i * 500);
     });
   </script>
 </body>

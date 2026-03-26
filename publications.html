@@ -7,190 +7,40 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0a0f1a;
-      color: #e8e6e1;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-
-    /* ── Navigation ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      height: 64px;
-      background: rgba(10, 15, 26, 0.8);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.4s ease;
-    }
-    nav.nav-hidden { transform: translateY(-100%); }
-    .nav-logo {
-      display: flex; align-items: center; gap: 12px;
-      font-weight: 600; font-size: 1.1rem;
-      letter-spacing: 0.02em;
-    }
-    .nav-logo img { height: 30px; }
-    .nav-logo .lab-name {
-      color: #888;
-      font-weight: 400;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-    }
-    .nav-links { display: flex; gap: 36px; }
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: #888;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-      position: relative;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: #e8e6e1; }
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0; right: 0;
-      height: 1px;
-      background: #4a9eff;
-    }
-
-    /* ── Page Header ── */
-    .page-header {
-      padding-top: 140px;
-      padding-bottom: 48px;
-      text-align: center;
-    }
-    .page-header h1 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 400;
-    }
-
-    /* ── Container ── */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
-
-    /* ── Legend ── */
     .legend {
-      text-align: right;
-      color: #666;
-      font-size: 0.8rem;
-      margin-bottom: 56px;
-      line-height: 1.8;
-      letter-spacing: 0.02em;
+      text-align: right; color: #666; font-size: 0.9rem;
+      margin-bottom: 56px; line-height: 1.8; letter-spacing: 0.02em;
     }
-
-    /* ── Year Section ── */
     .year-section {
       margin-bottom: 56px;
-      opacity: 0;
-      transform: translateY(24px);
+      opacity: 0; transform: translateY(24px);
       transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
                   transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
     }
-    .year-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .year-section.visible { opacity: 1; transform: translateY(0); }
     .year-section h2 {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: #4a9eff;
-      margin-bottom: 24px;
-      padding-bottom: 8px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem; font-weight: 400; color: #4a9eff;
+      margin-bottom: 24px; padding-bottom: 8px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-
-    /* ── Publication Item ── */
     .pub-item {
-      margin-bottom: 28px;
-      padding-left: 20px;
-      position: relative;
+      margin-bottom: 28px; padding-left: 20px; position: relative;
     }
     .pub-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 10px;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #555;
+      content: ''; position: absolute; left: 0; top: 10px;
+      width: 4px; height: 4px; border-radius: 50%; background: #555;
     }
-    .pub-title {
-      font-weight: 500;
-      font-size: 0.95rem;
-      margin-bottom: 6px;
-      line-height: 1.5;
-    }
-    .pub-authors {
-      font-size: 0.88rem;
-      color: #888;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-    .pub-authors .author-highlight {
-      font-weight: 600;
-      color: #e8e6e1;
-    }
-    .pub-authors em {
-      font-style: italic;
-    }
-    .pub-authors .pdf-link {
-      color: #666;
-      transition: color 0.3s;
-      margin-left: 4px;
-    }
-    .pub-authors .pdf-link:hover {
-      color: #4a9eff;
-    }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 32px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 16px;
-      margin-top: 80px;
-    }
-    footer .footer-text {
-      text-align: right;
-      line-height: 1.7;
-      font-size: 0.8rem;
-      color: #555;
-      letter-spacing: 0.02em;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-      .nav-links { gap: 20px; }
-      .nav-links a { font-size: 0.75rem; }
-      .nav-logo .lab-name { display: none; }
-      .container { padding: 0 1.5rem; }
-      .page-header { padding-top: 100px; }
-      footer { padding: 24px; }
-    }
+    .pub-title { font-weight: 500; font-size: 1.1rem; margin-bottom: 6px; line-height: 1.5; }
+    .pub-authors { font-size: 1.02rem; color: #888; line-height: 1.7; font-weight: 300; }
+    .pub-authors .author-highlight { font-weight: 600; color: #e8e6e1; }
+    .pub-authors em { font-style: italic; }
+    .pub-authors .pdf-link { color: #666; transition: color 0.3s; margin-left: 4px; }
+    .pub-authors .pdf-link:hover { color: #4a9eff; }
+    footer { margin-top: 80px; }
   </style>
 </head>
 <body>
@@ -202,166 +52,107 @@
         <img src="logo.png" alt="FSRL Logo">
         <span>FSRL</span>
       </a>
-      <span class="lab-name">Fluid &amp; Soft Robotics</span>
+      <span class="lab-name">Fluid and Soft Robotics</span>
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="index.html#about">About Us</a>
-      <a href="research.html">Research</a>
+      <a href="about.html">About Us</a>
+      <a href="index.html#research">Research</a>
       <a href="publications.html" class="active">Publications</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="news.html">News</a>
+      <a href="people.html">People</a>
+      <a href="index.html#news">News</a>
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <div class="page-header">
-    <h1>Publications</h1>
-  </div>
+  <div class="page-header"><h1>Publications</h1></div>
 
   <div class="container">
-
-    <!-- Legend -->
     <div class="legend">
       Asterisks (*) refer to corresponding authors<br>
       Daggers (&dagger;) refer to first authors
     </div>
 
-    <!-- 2025 -->
     <div class="year-section">
       <h2>2025</h2>
       <div class="pub-item">
         <div class="pub-title">Bioinspired and biohybrid soft robots: Principles and emerging technologies,</div>
-        <div class="pub-authors">
-          Z. Chen, J. Chen, <span class="author-highlight">S. Jung</span>, H.-Y. Kim, M. L. Preti, C. Laschi, Z. Ren, M. Sitti, R. J. Full, and G.-Z. Yang*, <em>Matter</em> 8, 102045 (2025) <a href="papers/2025.04. Matter_Bioinspired and biohybrid soft robots_Principles and emerging technologies.pdf" target="_blank" class="pdf-link">[PDF]</a>
-        </div>
+        <div class="pub-authors">Z. Chen, J. Chen, <span class="author-highlight">S. Jung</span>, H.-Y. Kim, M. L. Preti, C. Laschi, Z. Ren, M. Sitti, R. J. Full, and G.-Z. Yang*, <em>Matter</em> 8, 102045 (2025) <a href="papers/2025.04. Matter_Bioinspired and biohybrid soft robots_Principles and emerging technologies.pdf" target="_blank" class="pdf-link">[PDF]</a></div>
       </div>
     </div>
 
-    <!-- 2024 -->
     <div class="year-section">
       <h2>2024</h2>
       <div class="pub-item">
         <div class="pub-title">Plant-inspired soft actuators powered by water,</div>
-        <div class="pub-authors">
-          B. Shin&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, M. Choi, K. Park*, and H.-Y. Kim*, <em>MRS Bulletin</em> 49, 1-14 (2024) <a href="papers/2024.02. MRS bulletin.pdf" target="_blank" class="pdf-link">[PDF]</a>
-        </div>
+        <div class="pub-authors">B. Shin&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, M. Choi, K. Park*, and H.-Y. Kim*, <em>MRS Bulletin</em> 49, 1-14 (2024) <a href="papers/2024.02. MRS bulletin.pdf" target="_blank" class="pdf-link">[PDF]</a></div>
       </div>
       <div class="pub-item">
         <div class="pub-title">Path selection of liquid fronts in junctions of branching channels,</div>
-        <div class="pub-authors">
-          <span class="author-highlight">S. Jung&dagger;</span>, T. J. Kim&dagger;, J. H. Lee, W. Jung*, and H.-Y. Kim*, <em>Physics of Fluids</em> 36, 022107 (2024) <a href="papers/2024.02. PoF_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
-        </div>
+        <div class="pub-authors"><span class="author-highlight">S. Jung&dagger;</span>, T. J. Kim&dagger;, J. H. Lee, W. Jung*, and H.-Y. Kim*, <em>Physics of Fluids</em> 36, 022107 (2024) <a href="papers/2024.02. PoF_1st.pdf" target="_blank" class="pdf-link">[PDF]</a></div>
       </div>
     </div>
 
-    <!-- 2023 -->
     <div class="year-section">
       <h2>2023</h2>
       <div class="pub-item">
         <div class="pub-title">Hierarchical Capillarity-Assisted Liquid Invasion in Multilayered Paper Channels for Nanoelectrokinetic Preconcentration,</div>
-        <div class="pub-authors">
-          J. Seo&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, J. Park, H.-Y. Kim*, and S. J. Kim*, <em>Nano Letters</em> 23, 8065-8072 (2023) <a href="papers/2023.08. Nano letter_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
-        </div>
+        <div class="pub-authors">J. Seo&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, J. Park, H.-Y. Kim*, and S. J. Kim*, <em>Nano Letters</em> 23, 8065-8072 (2023) <a href="papers/2023.08. Nano letter_1st.pdf" target="_blank" class="pdf-link">[PDF]</a></div>
       </div>
     </div>
 
-    <!-- 2022 -->
     <div class="year-section">
       <h2>2022</h2>
       <div class="pub-item">
         <div class="pub-title">Hydrogel-based strong and fast actuators by electroosmotic turgor pressure,</div>
-        <div class="pub-authors">
-          H. Na&dagger;, Y.-W. Kang&dagger;, C. S. Park&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, H.-Y. Kim*, and J.-Y. Sun*, <em>Science</em> 376, 301-307 (2022) <a href="papers/2022.04. Science_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
-        </div>
+        <div class="pub-authors">H. Na&dagger;, Y.-W. Kang&dagger;, C. S. Park&dagger;, <span class="author-highlight">S. Jung&dagger;</span>, H.-Y. Kim*, and J.-Y. Sun*, <em>Science</em> 376, 301-307 (2022) <a href="papers/2022.04. Science_1st.pdf" target="_blank" class="pdf-link">[PDF]</a></div>
       </div>
     </div>
 
-    <!-- 2021 -->
     <div class="year-section">
       <h2>2021</h2>
       <div class="pub-item">
         <div class="pub-title">Avian mud nest architecture by self-secreted saliva,</div>
-        <div class="pub-authors">
-          Y. Jung&dagger;, <span class="author-highlight">S. Jung</span>, S.-I. Lee, W. Kim*, and H.-Y. Kim*, <em>Proceedings of the National Academy of Sciences</em> 118, e2018509118 (2021) <a href="papers/2021.01. PNAS_2nd.pdf" target="_blank" class="pdf-link">[PDF]</a>
-        </div>
+        <div class="pub-authors">Y. Jung&dagger;, <span class="author-highlight">S. Jung</span>, S.-I. Lee, W. Kim*, and H.-Y. Kim*, <em>Proceedings of the National Academy of Sciences</em> 118, e2018509118 (2021) <a href="papers/2021.01. PNAS_2nd.pdf" target="_blank" class="pdf-link">[PDF]</a></div>
       </div>
       <div class="pub-item">
         <div class="pub-title">Dynamics of directional soluble wicking,</div>
-        <div class="pub-authors">
-          <span class="author-highlight">S. Jung&dagger;</span>, W. Kim*, and H.-Y. Kim*, <em>Journal of Fluid Mechanics</em> 915, A58 (2021) <a href="papers/2021.03. JFM_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
-        </div>
+        <div class="pub-authors"><span class="author-highlight">S. Jung&dagger;</span>, W. Kim*, and H.-Y. Kim*, <em>Journal of Fluid Mechanics</em> 915, A58 (2021) <a href="papers/2021.03. JFM_1st.pdf" target="_blank" class="pdf-link">[PDF]</a></div>
       </div>
     </div>
 
-    <!-- 2020 -->
     <div class="year-section">
       <h2>2020</h2>
       <div class="pub-item">
         <div class="pub-title">Dynamics of liquid imbibition through partially soluble porous sheets,</div>
-        <div class="pub-authors">
-          <span class="author-highlight">S. Jung&dagger;</span>, W. Kim*, and H.-Y. Kim*, <em>JMST Advances</em> 2, 53-59 (2020)
-        </div>
+        <div class="pub-authors"><span class="author-highlight">S. Jung&dagger;</span>, W. Kim*, and H.-Y. Kim*, <em>JMST Advances</em> 2, 53-59 (2020)</div>
       </div>
     </div>
 
-    <!-- 2018 -->
     <div class="year-section">
       <h2>2018</h2>
       <div class="pub-item">
         <div class="pub-title">Anti-erosive mechanism of a grooved surface against impact of particle-laden flow,</div>
-        <div class="pub-authors">
-          <span class="author-highlight">S. Jung&dagger;</span>, E. Yang, W. Jung, and H.-Y. Kim*, <em>Wear</em> 406-407, 166-172 (2018) <a href="papers/2018.07. Wear_1st.pdf" target="_blank" class="pdf-link">[PDF]</a>
-        </div>
+        <div class="pub-authors"><span class="author-highlight">S. Jung&dagger;</span>, E. Yang, W. Jung, and H.-Y. Kim*, <em>Wear</em> 406-407, 166-172 (2018) <a href="papers/2018.07. Wear_1st.pdf" target="_blank" class="pdf-link">[PDF]</a></div>
       </div>
     </div>
-
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-text">
-      Fluid &amp; Soft Robotics Laboratory<br>
+      Fluid and Soft Robotics Laboratory<br>
       Department of Robotics and Mechatronics Engineering<br>
       DGIST, Korea
     </div>
   </footer>
 
+  <script src="main.js"></script>
   <script>
-    // ── Scroll Reveal ──
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.15 });
-
     document.querySelectorAll('.year-section').forEach(el => {
-      observer.observe(el);
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.15 });
+      obs.observe(el);
     });
-
-    // ── Smart Navbar ──
-    (function() {
-      const navbar = document.getElementById('navbar');
-      let lastScroll = 0;
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            const currentScroll = window.scrollY;
-            if (currentScroll > lastScroll && currentScroll > 80) {
-              navbar.classList.add('nav-hidden');
-            } else {
-              navbar.classList.remove('nav-hidden');
-            }
-            lastScroll = currentScroll;
-            ticking = false;
-          });
-          ticking = true;
-        }
-      });
-    })();
   </script>
 </body>
 </html>

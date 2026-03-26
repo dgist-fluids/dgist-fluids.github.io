@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People - FSRL</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .people-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    /* ── PI Section ── */
+    .pi-section {
+      padding: 40px 0 80px;
+    }
+    .pi-card {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+    .pi-photo {
+      flex-shrink: 0;
+      width: 200px; height: 200px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      overflow: hidden;
+    }
+    .pi-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .pi-info h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .pi-info .pi-title {
+      font-size: 0.85rem;
+      color: #888;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .pi-info .pi-bio {
+      font-size: 0.95rem;
+      color: #b0a99f;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .pi-links {
+      display: flex;
+      gap: 20px;
+    }
+    .pi-links a {
+      font-size: 0.8rem;
+      color: #888;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 2px;
+    }
+    .pi-links a:hover { color: #4a9eff; border-color: #4a9eff; }
+
+    /* ── Members Section ── */
+    .members-section {
+      padding: 60px 0 80px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .members-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      font-weight: 400;
+      margin-bottom: 48px;
+      position: relative;
+      display: inline-block;
+    }
+    .members-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; left: 0;
+      width: 32px; height: 2px;
+      background: #4a9eff;
+    }
+    .member-item {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+    .member-item:last-child { border-bottom: none; }
+    .member-item:hover {
+      background: rgba(255,255,255,0.02);
+    }
+    .member-photo {
+      flex-shrink: 0;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 0.7rem;
+      overflow: hidden;
+    }
+    .member-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .member-info h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .member-info .role {
+      font-size: 0.8rem;
+      color: #4a9eff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .member-info .topic {
+      font-size: 0.88rem;
+      color: #888;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+    .member-info .email {
+      font-size: 0.8rem;
+      color: #666;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Alumni Section ── */
+    .alumni-section {
+      padding: 60px 0 100px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .alumni-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      font-weight: 400;
+      margin-bottom: 32px;
+      position: relative;
+      display: inline-block;
+    }
+    .alumni-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; left: 0;
+      width: 32px; height: 2px;
+      background: #4a9eff;
+    }
+    .alumni-section p {
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 300;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .people-container { padding: 0 1.5rem; }
+      .pi-card { flex-direction: column; gap: 28px; align-items: center; text-align: center; }
+      .pi-photo { width: 160px; height: 160px; }
+      .pi-links { justify-content: center; }
+      .member-item { flex-direction: column; text-align: center; gap: 16px; }
+      .member-photo { width: 100px; height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;">
+        <img src="logo.png" alt="FSRL Logo">
+        <span>FSRL</span>
+      </a>
+      <span class="lab-name">Fluid and Soft Robotics</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="index.html#research">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="people.html" class="active">People</a>
+      <a href="index.html#news">News</a>
+    </div>
+  </nav>
+
+  <div class="page-header"><h1>People</h1></div>
+
+  <div class="people-container">
+
+    <!-- PI -->
+    <section class="pi-section fade-in">
+      <div class="pi-card">
+        <div class="pi-photo">Photo</div>
+        <div class="pi-info">
+          <h2>Prof. [Name]</h2>
+          <div class="pi-title">
+            Assistant Professor<br>
+            Dept. of Robotics and Mechatronics Engineering, DGIST
+          </div>
+          <p class="pi-bio">
+            Prof. [Name] leads the Fluid and Soft Robotics Laboratory at DGIST. Her research focuses on the mechanics of fluid–structure interaction, soft matter physics, and bio-inspired systems. She has published in <em>Science</em>, <em>Nano Letters</em>, <em>Journal of Fluid Mechanics</em>, and other leading journals.
+          </p>
+          <div class="pi-links">
+            <a href="#">Google Scholar</a>
+            <a href="mailto:placeholder@dgist.ac.kr">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Members -->
+    <section class="members-section">
+      <h2 class="fade-in">Members</h2>
+
+      <div class="member-item fade-in">
+        <div class="member-photo">Photo</div>
+        <div class="member-info">
+          <h3>[Name]</h3>
+          <div class="role">Ph.D. Student</div>
+          <div class="topic">Mechanics of morphing porous structures</div>
+          <div class="email">placeholder@dgist.ac.kr</div>
+        </div>
+      </div>
+
+      <div class="member-item fade-in">
+        <div class="member-photo">Photo</div>
+        <div class="member-info">
+          <h3>[Name]</h3>
+          <div class="role">M.S. Student</div>
+          <div class="topic">Hydrogel-driven autonomous actuation</div>
+          <div class="email">placeholder@dgist.ac.kr</div>
+        </div>
+      </div>
+
+      <div class="member-item fade-in">
+        <div class="member-photo">Photo</div>
+        <div class="member-info">
+          <h3>[Name]</h3>
+          <div class="role">M.S. Student</div>
+          <div class="topic">Fluid transport in deformable soft systems</div>
+          <div class="email">placeholder@dgist.ac.kr</div>
+        </div>
+      </div>
+
+      <div class="member-item fade-in">
+        <div class="member-photo">Photo</div>
+        <div class="member-info">
+          <h3>[Name]</h3>
+          <div class="role">Undergraduate Researcher</div>
+          <div class="topic">Bio-inspired structural design</div>
+          <div class="email">placeholder@dgist.ac.kr</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alumni -->
+    <section class="alumni-section fade-in">
+      <h2>Alumni</h2>
+      <p>To be updated.</p>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-text">
+      Fluid and Soft Robotics Laboratory<br>
+      Department of Robotics and Mechatronics Engineering<br>
+      DGIST, Korea
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

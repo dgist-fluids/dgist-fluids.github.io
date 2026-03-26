@@ -1,0 +1,176 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0f1a;
+  color: #e8e6e1;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ── Navigation ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+  background: rgba(10, 15, 26, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.4s ease;
+}
+nav.nav-hidden {
+  transform: translateY(-100%);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 600; font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+.nav-logo img { height: 30px; }
+.nav-logo .lab-name {
+  color: #888;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+.nav-links { display: flex; gap: 36px; }
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #888;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #e8e6e1;
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: #4a9eff;
+}
+
+/* ── Container ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+/* ── Section Headers ── */
+.section-header {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 400;
+  margin-bottom: 48px;
+  position: relative;
+  display: inline-block;
+}
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #4a9eff;
+}
+.section-header a {
+  color: inherit;
+  transition: color 0.3s;
+}
+.section-header a:hover {
+  color: #4a9eff;
+}
+
+/* ── Page Header (subpages) ── */
+.page-header {
+  padding-top: 140px;
+  padding-bottom: 48px;
+  text-align: center;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+footer .footer-text {
+  text-align: right;
+  line-height: 1.7;
+  font-size: 0.8rem;
+  color: #555;
+  letter-spacing: 0.02em;
+}
+
+/* ── Scroll Animations ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Stagger children ── */
+.stagger > *:nth-child(1) { transition-delay: 0s; }
+.stagger > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger > *:nth-child(4) { transition-delay: 0.3s; }
+.stagger > *:nth-child(5) { transition-delay: 0.4s; }
+
+/* ── Responsive (shared) ── */
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links { gap: 20px; }
+  .nav-links a { font-size: 0.75rem; }
+  .nav-logo .lab-name { display: none; }
+  .container { padding: 0 1.5rem; }
+  .page-header { padding-top: 100px; }
+  footer { padding: 24px; }
+}

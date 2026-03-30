@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - FSRL</title>
+  <title>How We Work - FSRL</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     .about-container {
@@ -16,15 +16,15 @@
       padding: 0 3rem;
     }
     .about-section {
-      padding: 64px 0;
+      padding: 6rem 0;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .about-section:last-of-type {
       border-bottom: none;
-      padding-bottom: 100px;
+      padding-bottom: 8rem;
     }
     .about-section h2 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 400;
       margin-bottom: 32px;
@@ -39,17 +39,14 @@
       background: #4a9eff;
     }
     .about-section p {
-      font-size: 0.95rem;
-      color: #b0a99f;
+      font-size: 1.05rem;
+      color: #c5bfb6;
       line-height: 1.9;
-      font-weight: 300;
+      font-weight: 400;
       margin-bottom: 20px;
     }
-    .about-section p:last-child {
-      margin-bottom: 0;
-    }
+    .about-section p:last-child { margin-bottom: 0; }
     .pi-note {
-      position: relative;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
       border-left: 3px solid #4a9eff;
@@ -57,94 +54,87 @@
       padding: 40px;
       margin-top: 32px;
     }
-    .pi-note p {
-      color: #c5bfb6;
-      font-size: 0.95rem;
-      line-height: 1.9;
-    }
+    .pi-note p { color: #c5bfb6; }
     .pi-signature {
       margin-top: 28px;
       padding-top: 20px;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
     .pi-signature .name {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.1rem;
       color: #e8e6e1;
       margin-bottom: 4px;
     }
     .pi-signature .title {
-      font-size: 0.8rem;
-      color: #666;
+      font-size: 0.88rem;
+      color: #888;
       line-height: 1.6;
       letter-spacing: 0.02em;
     }
-
+    .about-section .section-img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 32px;
+      object-fit: cover;
+      max-height: 320px;
+      filter: grayscale(20%);
+    }
     @media (max-width: 768px) {
       .about-container { padding: 0 1.5rem; }
-      .about-section { padding: 48px 0; }
+      .about-section { padding: 4rem 0; }
       .pi-note { padding: 28px 20px; }
+      .about-section .section-img { max-height: 200px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav id="navbar">
     <div class="nav-logo">
       <a href="index.html" style="display:flex;align-items:center;gap:12px;">
-        <img src="logo.png" alt="FSRL Logo">
-        <span>FSRL</span>
+        <img src="logo.png" alt="FSRL Logo"><span>FSRL</span>
       </a>
       <span class="lab-name">Fluid and Soft Robotics</span>
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="about.html" class="active">About Us</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle active">About Us</button>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">How We Work</a>
+          <a href="people.html">People</a>
+        </div>
+      </div>
       <a href="index.html#research">Research</a>
       <a href="publications.html">Publications</a>
-      <a href="people.html">People</a>
-      <a href="index.html#news">News</a>
     </div>
   </nav>
 
-  <div class="page-header"><h1>About Us</h1></div>
+  <div class="page-header"><h1>How We Work</h1></div>
 
   <div class="about-container">
 
-    <!-- Philosophy -->
     <section class="about-section fade-in">
-      <h2>What drives us</h2>
-      <p>We believe the most compelling science begins at an interface — where a solid meets a fluid, where geometry meets physics, where a simple structure gives rise to complex function.</p>
-      <p>At FSRL, we do not start with applications. We start with questions. Why does a porous shell deform the way it does when fluid passes through? How can a hydrogel's swelling encode a sequence of motions without any external control? What happens when structure itself becomes the mechanism?</p>
-      <p>These questions lead us to the intersection of fluid mechanics, soft matter physics, and structural design. Our work is grounded in mechanics — the language of forces, deformations, and instabilities — but our curiosity extends wherever the physics takes us.</p>
+      <img class="section-img" src="how we work/Gemini_Generated_Image_3i0j1t3i0j1t3i0j.jpeg" alt="Research in the lab">
+      <h2>Depth over Speed</h2>
+      <p>Research in our lab is driven by the pursuit of fundamental physical principles. We prioritize careful reasoning over rapid output, and understanding mechanisms over simply optimizing outcomes. Progress may be gradual, but it is grounded in clarity and physical insight. We view research not just as a task, but as a continuous form of inquiry and reflection.</p>
     </section>
 
-    <!-- How We Work -->
     <section class="about-section fade-in">
-      <h2>How we work</h2>
-      <p>Research in our lab is built on two rhythms.</p>
-      <p>The first is a weekly one-on-one conversation between each student and the PI. These are not status reports — they are thinking sessions. An hour to slow down, question assumptions, and reshape ideas together. We believe that the best research insights emerge not from presentations, but from unhurried dialogue.</p>
-      <p>The second is a weekly group exchange where every member shares their current work with the rest of the lab. This is where unexpected connections happen — where someone working on hydrogel swelling finds resonance with someone studying porous shell mechanics. We keep these sessions informal and curiosity-driven.</p>
-      <p>Beyond these structures, we value a culture of intellectual honesty. We ask hard questions because we care about getting the science right, and we support each other through the inevitable uncertainties of research.</p>
+      <img class="section-img" src="how we work/Gemini_Generated_Image_t8a2cnt8a2cnt8a2.jpeg" alt="One-on-one discussion">
+      <h2>Individual Focus</h2>
+      <p>The lab is intentionally small to ensure that every student is mentored as an individual researcher, not as a pair of hands. Mentoring is centered around regular one-on-one meetings, where students are encouraged to articulate their reasoning freely and engage in deep discussion. My role is to ask questions, provide feedback, and challenge assumptions — fostering an environment where logic prevails over hierarchy. By supporting students without unnecessary intervention, I aim to cultivate independent thinkers who develop confidence and ownership in their own perspectives.</p>
     </section>
 
-    <!-- A note from the PI -->
     <section class="about-section fade-in">
-      <h2>A note from the PI</h2>
-      <div class="pi-note">
-        <p>I started FSRL because I wanted to build a lab where mechanics is not just a tool, but a way of seeing. A place where we look at a swelling gel or a collapsing shell and ask: what is the physics trying to tell us?</p>
-        <p>If you are someone who finds beauty in a well-posed problem, who gets excited by the moment an experiment reveals something the model didn't predict — I'd love to talk.</p>
-        <div class="pi-signature">
-          <div class="name">Prof. [Name]</div>
-          <div class="title">Assistant Professor<br>Dept. of Robotics and Mechatronics Engineering, DGIST</div>
-        </div>
-      </div>
+      <img class="section-img" src="how we work/Gemini_Generated_Image_ofbum1ofbum1ofbu.jpeg" alt="Group session">
+      <h2>Collective Rhythm</h2>
+      <p>In addition to individual mentoring, the lab holds a weekly group session where every member shares their ongoing work. These are intentionally informal — a space for open questions, unexpected connections, and mutual feedback. Research can be solitary, and we make sure it doesn't have to be.</p>
     </section>
 
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-text">
       Fluid and Soft Robotics Laboratory<br>

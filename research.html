@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research - FSRL</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .research-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    /* ── Intro ── */
+    .research-intro {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 40px 0 80px;
+    }
+    .research-intro p {
+      font-size: 1.1rem;
+      color: #c5bfb6;
+      line-height: 1.9;
+      font-weight: 400;
+    }
+
+    /* ── Principles Section ── */
+    .principles {
+      padding: 0 0 80px;
+    }
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .principle-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 40px 36px;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                  border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                  box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+    }
+    .principle-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(74, 158, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(74, 158, 255, 0.08);
+    }
+    .principle-card .card-spotlight {
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity 0.4s;
+      pointer-events: none; z-index: 1;
+      border-radius: 12px;
+    }
+    .principle-card:hover .card-spotlight { opacity: 1; }
+    .principle-card .direction {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4a9eff;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding: 4px 12px;
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 4px;
+      background: rgba(74, 158, 255, 0.08);
+      position: relative; z-index: 2;
+    }
+    .principle-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      position: relative; z-index: 2;
+    }
+    .principle-card p {
+      font-size: 0.98rem;
+      color: #c5bfb6;
+      line-height: 1.8;
+      font-weight: 400;
+      margin-bottom: 20px;
+      position: relative; z-index: 2;
+    }
+    .principle-card .keywords {
+      font-size: 0.85rem;
+      color: #888;
+      letter-spacing: 0.04em;
+      position: relative; z-index: 2;
+    }
+
+    /* ── Conceptual Images ── */
+    .conceptual-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+    .conceptual-images img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      aspect-ratio: 16/9;
+    }
+    .conceptual-caption {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+      font-style: italic;
+      padding-bottom: 80px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 0;
+    }
+
+    /* ── Methodology ── */
+    .methodology {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .methodology p {
+      font-size: 1.05rem;
+      color: #c5bfb6;
+      line-height: 1.8;
+      font-weight: 400;
+      max-width: 700px;
+      margin: 0 auto 36px;
+    }
+    .methodology-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .methodology-flow .step {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #e8e6e1;
+      padding: 10px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+    }
+    .methodology-flow .arrow {
+      font-size: 1rem;
+      color: #4a9eff;
+    }
+
+    /* ── Applications ── */
+    .applications {
+      padding: 80px 0 100px;
+    }
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .app-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                  border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .app-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(74, 158, 255, 0.15);
+    }
+    .app-card h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 14px;
+      color: #e8e6e1;
+    }
+    .app-card p {
+      font-size: 0.95rem;
+      color: #a0a0a0;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .research-container { padding: 0 1.5rem; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .conceptual-images { grid-template-columns: 1fr; }
+      .app-grid { grid-template-columns: 1fr; }
+      .methodology-flow { gap: 10px; }
+      .methodology-flow .step { font-size: 0.82rem; padding: 8px 16px; }
+      .principle-card { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;">
+        <img src="logo.png" alt="FSRL Logo"><span>FSRL</span>
+      </a>
+      <span class="lab-name">Fluid and Soft Robotics</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle">About Us</button>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">How We Work</a>
+          <a href="people.html">People</a>
+        </div>
+      </div>
+      <a href="research.html" class="active">Research</a>
+      <a href="publications.html">Publications</a>
+    </div>
+  </nav>
+
+  <div class="page-header"><h1>Research</h1></div>
+
+  <div class="research-container">
+
+    <!-- Intro -->
+    <section class="research-intro fade-in">
+      <p>We study the physical interplay between fluids and soft solids — how fluid flow reshapes soft materials and how deformation generates fluid motion. From this coupling, we uncover physical principles that extend across systems and scales, and translate them into functional platforms for actuation, transport, and manipulation.</p>
+    </section>
+
+    <!-- Core Physical Principles -->
+    <section class="principles">
+      <h2 class="section-header fade-in">Core Physical Principles</h2>
+      <div class="principles-grid stagger">
+        <div class="principle-card fade-in-left" data-spotlight>
+          <div class="card-spotlight"></div>
+          <div class="direction">Fluid → Solid</div>
+          <h3>Fluid-driven soft systems</h3>
+          <p>We study how fluid pressure and flow deform soft materials to generate force and motion. This coupling provides a direct physical route from fluid transport to mechanical response — from shape-morphing structures to autonomous soft machines.</p>
+          <div class="keywords">Poroelasticity · Soft matter physics · Polymer physics · Elasticity</div>
+        </div>
+        <div class="principle-card fade-in-right" data-spotlight>
+          <div class="card-spotlight"></div>
+          <div class="direction">Solid → Fluid</div>
+          <h3>Structure-driven fluid motion</h3>
+          <p>We investigate how deformation, geometry, and vibration of soft structures generate pressure gradients and drive fluid flow. This principle enables non-contact transport and organization of particles and cells — revealing how structure alone can actively control fluid behavior.</p>
+          <div class="keywords">Microfluid mechanics · Capillarity · Porous flow · Acoustofluidics</div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Methodology -->
+    <section class="methodology fade-in">
+      <h2 class="section-header">Methodology</h2>
+      <p>Our research integrates experiments, multiscale visualization, and theoretical modeling to uncover the physical principles.</p>
+      <div class="methodology-flow">
+        <span class="step">Experiment</span>
+        <span class="arrow">→</span>
+        <span class="step">Visualization</span>
+        <span class="arrow">→</span>
+        <span class="step">Modeling</span>
+        <span class="arrow">→</span>
+        <span class="step">Theory</span>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Applications -->
+    <section class="applications">
+      <h2 class="section-header fade-in">From Physical Principles to Applications</h2>
+      <div class="app-grid stagger">
+        <div class="app-card fade-in">
+          <h4>Biomedical Systems</h4>
+          <p>Fluid–structure coupling in biological systems, enabling cell manipulation, soft implantable devices, and multiscale transport.</p>
+        </div>
+        <div class="app-card fade-in">
+          <h4>Soft Robotics</h4>
+          <p>Fluid-driven actuation and geometry-mediated force generation for compliant and adaptive robotic systems.</p>
+        </div>
+        <div class="app-card fade-in">
+          <h4>Manufacturing Interfaces</h4>
+          <p>Structure–flow interactions applied to precision fluid control, material transport, and surface-level processing in advanced manufacturing systems.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-text">
+      Fluid and Soft Robotics Laboratory<br>
+      Department of Robotics and Mechatronics Engineering<br>
+      DGIST, Korea
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

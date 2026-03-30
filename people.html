@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .people-container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 3rem;
     }
@@ -27,49 +27,66 @@
     }
     .pi-photo {
       flex-shrink: 0;
-      width: 200px; height: 200px;
-      border-radius: 8px;
+      width: 180px; height: 220px;
+      border-radius: 12px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #555;
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
       overflow: hidden;
     }
     .pi-photo img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: 42% 20%;
+      transform: scale(1.4);
+      transform-origin: 42% 30%;
     }
     .pi-info h2 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.8rem;
+      font-size: 2.4rem;
       font-weight: 400;
       margin-bottom: 6px;
     }
+    .pi-info .pi-role {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #e8e6e1;
+      margin-bottom: 10px;
+    }
     .pi-info .pi-title {
-      font-size: 0.85rem;
+      font-size: 0.92rem;
       color: #888;
       letter-spacing: 0.02em;
-      margin-bottom: 20px;
-      line-height: 1.6;
+      margin-bottom: 28px;
+      line-height: 1.7;
     }
-    .pi-info .pi-bio {
+    .pi-detail-section {
+      margin-bottom: 24px;
+    }
+    .pi-detail-section h4 {
+      font-size: 1.05rem;
+      color: #4a9eff;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .pi-detail-section ul {
+      list-style: square;
+      padding-left: 18px;
+    }
+    .pi-detail-section li {
       font-size: 0.95rem;
-      color: #b0a99f;
+      color: #c5bfb6;
       line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: 20px;
+      font-weight: 400;
     }
     .pi-links {
       display: flex;
       gap: 20px;
+      margin-top: 8px;
     }
     .pi-links a {
-      font-size: 0.8rem;
+      font-size: 0.88rem;
       color: #888;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: color 0.3s;
       border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -77,12 +94,22 @@
     }
     .pi-links a:hover { color: #4a9eff; border-color: #4a9eff; }
 
+    /* ── PI Details (below photo) ── */
+    .pi-details {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
     /* ── Members Section ── */
     .members-section {
       padding: 60px 0 80px;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
-    .members-section h2 {
+    .members-section > h2 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(1.8rem, 3vw, 2.2rem);
       font-weight: 400;
@@ -90,66 +117,81 @@
       position: relative;
       display: inline-block;
     }
-    .members-section h2::after {
+    .members-section > h2::after {
       content: '';
       position: absolute;
       bottom: -8px; left: 0;
       width: 32px; height: 2px;
       background: #4a9eff;
     }
-    .member-item {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: background 0.3s;
+    .members-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
-    .member-item:last-child { border-bottom: none; }
-    .member-item:hover {
-      background: rgba(255,255,255,0.02);
-    }
-    .member-photo {
-      flex-shrink: 0;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
+    .member-card {
+      position: relative;
+      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #555;
-      font-size: 0.7rem;
-      overflow: hidden;
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                  border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                  box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
-    .member-photo img {
-      width: 100%; height: 100%; object-fit: cover;
+    .member-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(74, 158, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(74, 158, 255, 0.08);
     }
-    .member-info h3 {
+    .member-card .card-spotlight {
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity 0.4s;
+      pointer-events: none; z-index: 1;
+      border-radius: 16px;
+    }
+    .member-card:hover .card-spotlight { opacity: 1; }
+    .member-card h3 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 400;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      position: relative; z-index: 2;
     }
-    .member-info .role {
-      font-size: 0.8rem;
+    .member-card .role {
+      font-size: 0.85rem;
       color: #4a9eff;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 14px;
+      position: relative; z-index: 2;
     }
-    .member-info .topic {
+    .member-card .topic {
+      font-size: 0.95rem;
+      color: #c5bfb6;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 10px;
+      position: relative; z-index: 2;
+    }
+    .member-card .personal {
       font-size: 0.88rem;
-      color: #888;
-      font-weight: 300;
-      font-style: italic;
-      margin-bottom: 6px;
-    }
-    .member-info .email {
-      font-size: 0.8rem;
       color: #666;
-      letter-spacing: 0.02em;
+      font-style: italic;
+      font-weight: 400;
+      margin-bottom: 14px;
+      position: relative; z-index: 2;
     }
+    .member-card .email {
+      font-size: 0.82rem;
+      color: #555;
+      position: relative; z-index: 2;
+    }
+    .member-card .email a {
+      color: #888;
+      transition: color 0.3s;
+    }
+    .member-card .email a:hover { color: #4a9eff; }
 
     /* ── Alumni Section ── */
     .alumni-section {
@@ -174,17 +216,17 @@
     .alumni-section p {
       font-size: 0.9rem;
       color: #666;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .people-container { padding: 0 1.5rem; }
       .pi-card { flex-direction: column; gap: 28px; align-items: center; text-align: center; }
-      .pi-photo { width: 160px; height: 160px; }
+      .pi-photo { width: 160px; height: 200px; }
       .pi-links { justify-content: center; }
-      .member-item { flex-direction: column; text-align: center; gap: 16px; }
-      .member-photo { width: 100px; height: 100px; }
+      .pi-details { gap: 20px; }
+      .members-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -201,11 +243,15 @@
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle active">About Us</button>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">How We Work</a>
+          <a href="people.html">People</a>
+        </div>
+      </div>
       <a href="index.html#research">Research</a>
       <a href="publications.html">Publications</a>
-      <a href="people.html" class="active">People</a>
-      <a href="index.html#news">News</a>
     </div>
   </nav>
 
@@ -216,20 +262,39 @@
     <!-- PI -->
     <section class="pi-section fade-in">
       <div class="pi-card">
-        <div class="pi-photo">Photo</div>
+        <div class="pi-photo">
+          <img src="임용 프로필/프로필 사진 1.jpg" alt="Sohyun Jung">
+        </div>
         <div class="pi-info">
-          <h2>Prof. [Name]</h2>
+          <h2>Sohyun Jung</h2>
+          <div class="pi-role">Principal Investigator</div>
           <div class="pi-title">
-            Assistant Professor<br>
-            Dept. of Robotics and Mechatronics Engineering, DGIST
+            <span style="color:#4a9eff;">Assistant Professor</span> / Apr. 2024 – current<br>
+            Department of Robotics and Mechatronics Engineering<br>
+            Daegu Gyeongbuk Institute of Science &amp; Technology (DGIST), Daegu, Korea
           </div>
-          <p class="pi-bio">
-            Prof. [Name] leads the Fluid and Soft Robotics Laboratory at DGIST. Her research focuses on the mechanics of fluid–structure interaction, soft matter physics, and bio-inspired systems. She has published in <em>Science</em>, <em>Nano Letters</em>, <em>Journal of Fluid Mechanics</em>, and other leading journals.
-          </p>
           <div class="pi-links">
-            <a href="#">Google Scholar</a>
-            <a href="mailto:placeholder@dgist.ac.kr">Email</a>
+            <a href="https://scholar.google.co.kr/citations?hl=ko&user=IhV8iJIAAAAJ" target="_blank">Google Scholar</a>
+            <a href="mailto:sohyunjung@dgist.ac.kr">Email</a>
           </div>
+        </div>
+      </div>
+
+      <div class="pi-details fade-in">
+        <div class="pi-detail-section">
+          <h4>Education</h4>
+          <ul>
+            <li>Ph.D. in Mechanical Engineering, Seoul National University, Seoul, Korea (2021)</li>
+            <li>B.S. in Mechanical Engineering, Korea University, Seoul, Korea (2015)</li>
+          </ul>
+        </div>
+        <div class="pi-detail-section">
+          <h4>Experiences</h4>
+          <ul>
+            <li>Assistant Professor, DGIST, Korea (2024 – Present)</li>
+            <li>BK Assistant Professor, Seoul National University, Korea (2022 – 2023)</li>
+            <li>Postdoc, Seoul National University, Korea (2021)</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -238,43 +303,38 @@
     <section class="members-section">
       <h2 class="fade-in">Members</h2>
 
-      <div class="member-item fade-in">
-        <div class="member-photo">Photo</div>
-        <div class="member-info">
-          <h3>[Name]</h3>
-          <div class="role">Ph.D. Student</div>
-          <div class="topic">Mechanics of morphing porous structures</div>
-          <div class="email">placeholder@dgist.ac.kr</div>
+      <div class="members-grid stagger">
+        <div class="member-card fade-in" data-spotlight>
+          <div class="card-spotlight"></div>
+          <h3>Tae Jeong Kim</h3>
+          <div class="role">Postdoctoral Researcher</div>
+          <div class="topic">B.S. in Mechanical Engineering, Seoul National University</div>
+          <div class="topic">Ph.D. in Mechanical Engineering, Seoul National University</div>
+          <div class="email"><a href="mailto:tj.kim@dgist.ac.kr">tj.kim@dgist.ac.kr</a></div>
         </div>
-      </div>
 
-      <div class="member-item fade-in">
-        <div class="member-photo">Photo</div>
-        <div class="member-info">
-          <h3>[Name]</h3>
+        <div class="member-card fade-in" data-spotlight>
+          <div class="card-spotlight"></div>
+          <h3>Jaehee Shin</h3>
+          <div class="role">Integrated M.S.–Ph.D. Student</div>
+          <div class="topic">B.S. in Mechanical Engineering, Tech University of Korea</div>
+          <div class="email"><a href="mailto:wos1840@dgist.ac.kr">wos1840@dgist.ac.kr</a></div>
+        </div>
+
+        <div class="member-card fade-in" data-spotlight>
+          <div class="card-spotlight"></div>
+          <h3>Jeongwon Kim</h3>
           <div class="role">M.S. Student</div>
-          <div class="topic">Hydrogel-driven autonomous actuation</div>
-          <div class="email">placeholder@dgist.ac.kr</div>
+          <div class="topic">B.S. in Mechanical Engineering, Korea University of Technology and Education</div>
+          <div class="email"><a href="mailto:jeongwon_kim@dgist.ac.kr">jeongwon_kim@dgist.ac.kr</a></div>
         </div>
-      </div>
 
-      <div class="member-item fade-in">
-        <div class="member-photo">Photo</div>
-        <div class="member-info">
-          <h3>[Name]</h3>
+        <div class="member-card fade-in" data-spotlight>
+          <div class="card-spotlight"></div>
+          <h3>Hyeongjin Lee</h3>
           <div class="role">M.S. Student</div>
-          <div class="topic">Fluid transport in deformable soft systems</div>
-          <div class="email">placeholder@dgist.ac.kr</div>
-        </div>
-      </div>
-
-      <div class="member-item fade-in">
-        <div class="member-photo">Photo</div>
-        <div class="member-info">
-          <h3>[Name]</h3>
-          <div class="role">Undergraduate Researcher</div>
-          <div class="topic">Bio-inspired structural design</div>
-          <div class="email">placeholder@dgist.ac.kr</div>
+          <div class="topic">B.S. in Mechanical Engineering, Kyonggi University</div>
+          <div class="email"><a href="mailto:ssd2209@dgist.ac.kr">ssd2209@dgist.ac.kr</a></div>
         </div>
       </div>
     </section>

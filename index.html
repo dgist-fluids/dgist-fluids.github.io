@@ -49,8 +49,8 @@
       line-height: 1.15;
     }
     .tagline {
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-      font-weight: 300;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 400;
       margin-bottom: 8px;
       line-height: 1.5;
     }
@@ -71,10 +71,10 @@
                   transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     }
     .subtitle {
-      font-size: 1rem;
-      color: #888;
+      font-size: 1.05rem;
+      color: #a0a0a0;
       margin-top: 32px;
-      font-weight: 300;
+      font-weight: 400;
       letter-spacing: 0.02em;
     }
 
@@ -109,7 +109,7 @@
     .research-card:hover .card-spotlight { opacity: 1; }
     .research-card .card-img-wrapper { overflow: hidden; }
     .research-card .card-img {
-      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      width: 100%; object-fit: contain;
       transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
     .research-card:hover .card-img { transform: scale(1.02); }
@@ -118,17 +118,70 @@
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.3rem; font-weight: 400; margin-bottom: 10px;
     }
-    .research-card p { font-size: 0.9rem; color: #888; line-height: 1.6; font-weight: 300; }
+    .research-card p { font-size: 0.95rem; color: #a0a0a0; line-height: 1.6; font-weight: 400; }
 
-    /* ── Recent Updates ── */
+    /* ── Recent Updates (Timeline) ── */
     .updates { padding: 80px 0; }
-    .updates .section-header { display: flex; align-items: baseline; gap: 16px; }
-    .updates .section-header span {
-      font-family: 'Inter', sans-serif; font-size: 0.85rem;
-      font-weight: 300; color: #666; letter-spacing: 0.02em;
+    .timeline {
+      position: relative;
+      margin-top: 48px;
+      padding-left: 32px;
     }
-    .updates-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 8px; }
-    .updates-content { margin-top: 32px; color: #888; font-size: 0.95rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 32px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -35px; top: 6px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4a9eff;
+    }
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .timeline-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e8e6e1;
+    }
+    .timeline-tag {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: transparent;
+    }
+    .tag-conference { border: 1px solid #4a9eff; color: #4a9eff; }
+    .tag-funding { border: 1px solid #c9a84c; color: #c9a84c; }
+    .tag-people { border: 1px solid #3dd8c5; color: #3dd8c5; }
+    .tag-award { border: 1px solid #e8a04c; color: #e8a04c; }
+    .tag-publication { border: 1px solid #a78bfa; color: #a78bfa; }
+    .tag-lab { border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.4); }
+    .timeline-text {
+      font-size: 0.95rem;
+      color: #a0a0a0;
+      line-height: 1.6;
+      font-weight: 400;
+    }
 
     /* ── Join Us ── */
     .join { padding: 80px 0 120px; }
@@ -142,8 +195,8 @@
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.5rem; font-weight: 400; margin: 0 0 20px;
     }
-    .join p { font-size: 0.95rem; color: #b0a99f; line-height: 1.8; font-weight: 300; }
-    .join .kr { margin-top: 20px; color: #666; font-size: 0.9rem; }
+    .join p { font-size: 1rem; color: #c5bfb6; line-height: 1.8; font-weight: 400; }
+    .join .kr { margin-top: 20px; color: #888; font-size: 0.95rem; }
 
     /* ── Responsive (page-specific) ── */
     @media (max-width: 768px) {
@@ -166,11 +219,15 @@
     </div>
     <div class="nav-links">
       <a href="index.html" class="active">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="#research">Research</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle">About Us</button>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">How We Work</a>
+          <a href="people.html">People</a>
+        </div>
+      </div>
+      <a href="research.html">Research</a>
       <a href="publications.html">Publications</a>
-      <a href="people.html">People</a>
-      <a href="#news">News</a>
     </div>
   </nav>
 
@@ -217,13 +274,59 @@
     </section>
 
     <!-- Recent Updates -->
-    <section class="updates fade-in" id="news">
-      <h2 class="section-header">
-        <a href="news.html">Recent Updates</a>
-        <span>(Last updated: Jan 2026)</span>
-      </h2>
-      <div class="updates-divider"></div>
-      <div class="updates-content"></div>
+    <section class="updates" id="news">
+      <h2 class="section-header fade-in">Recent Updates</h2>
+      <div class="timeline stagger">
+        <div class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-date">Dec 2025</span>
+            <span class="timeline-tag tag-conference">Conference</span>
+          </div>
+          <p class="timeline-text">Jaehee Shin presented at the 80th Anniversary Annual Meeting of the Korean Society of Mechanical Engineers (KSME).</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-date">Sep 2025</span>
+            <span class="timeline-tag tag-funding">Funding</span>
+          </div>
+          <p class="timeline-text">Selected for the NRF Young Researcher Grant (Seeding Track).</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-date">Sep 2025</span>
+            <span class="timeline-tag tag-people">People</span>
+          </div>
+          <p class="timeline-text">Jeongwon Kim joined the lab as a graduate student.</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-date">Jul 2025</span>
+            <span class="timeline-tag tag-award">Award</span>
+          </div>
+          <p class="timeline-text">Seungmin Lee received an Outstanding Intern Award.</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-date">Mar 2025</span>
+            <span class="timeline-tag tag-people">People</span>
+          </div>
+          <p class="timeline-text">Jaehee Shin officially joined the graduate program.</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-date">Feb 2024</span>
+            <span class="timeline-tag tag-publication">Publication</span>
+          </div>
+          <p class="timeline-text">Paper published in Physics of Fluids.</p>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-meta">
+            <span class="timeline-date">May 2024</span>
+            <span class="timeline-tag tag-lab">Lab</span>
+          </div>
+          <p class="timeline-text">FSRL officially established at DGIST.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Join Us -->
@@ -239,6 +342,19 @@
           우리의 연구가 궁금하다면 편하게 연락 주세요.<br>
           학부 연구 참여 및 대학원 진학 상담은 상시 가능합니다.
         </p>
+      </div>
+    </section>
+
+    <!-- A note from the PI -->
+    <section class="pi-note-section fade-in" style="padding: 0 0 120px;">
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-left: 3px solid #4a9eff; border-radius: 8px; padding: 40px;">
+        <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 20px; color: #e8e6e1;">A note from the PI</h3>
+        <p style="font-size: 1rem; color: #c5bfb6; line-height: 1.9; font-weight: 400; margin-bottom: 16px;">Our questions begin with physics — but they don't end there. Understanding why a structure deforms or how a fluid moves through soft matter is, for us, the first step toward building something that actually works. The physics is never just physics here. It's always heading somewhere.</p>
+        <p style="font-size: 1rem; color: #c5bfb6; line-height: 1.9; font-weight: 400;">If that way of thinking resonates with you, I'd love to talk.</p>
+        <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06);">
+          <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; color: #e8e6e1;">Sohyun Jung</div>
+          <div style="font-size: 0.78rem; color: #666; margin-top: 2px;">Assistant Professor, Dept. of Robotics and Mechatronics Engineering, DGIST</div>
+        </div>
       </div>
     </section>
 

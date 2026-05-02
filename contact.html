@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - FSRL</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+    .contact-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-section:last-of-type {
+      border-bottom: none;
+      padding-bottom: 8rem;
+    }
+    .contact-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 400;
+      margin-bottom: 32px;
+      position: relative;
+      display: inline-block;
+    }
+    .contact-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; left: 0;
+      width: 32px; height: 2px;
+      background: #4a9eff;
+    }
+
+    /* PI card */
+    .pi-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid #4a9eff;
+      border-radius: 8px;
+      padding: 36px 40px;
+    }
+    .pi-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #e8e6e1;
+      margin-bottom: 6px;
+    }
+    .pi-title {
+      font-size: 0.92rem;
+      color: #888;
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+    .pi-rows {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 14px 20px;
+      font-size: 0.97rem;
+    }
+    .pi-rows dt {
+      color: #888;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+    .pi-rows dd {
+      color: #c5bfb6;
+      line-height: 1.6;
+      word-break: break-all;
+    }
+    .pi-rows dd a {
+      color: #c5bfb6;
+      border-bottom: 1px solid rgba(74,158,255,0.3);
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .pi-rows dd a:hover {
+      color: #4a9eff;
+      border-bottom-color: #4a9eff;
+    }
+
+    /* External links */
+    .links-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .links-list a {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: #c5bfb6;
+      letter-spacing: 0.04em;
+      transition: color 0.3s, border-color 0.3s, background 0.3s;
+    }
+    .links-list a:hover {
+      color: #4a9eff;
+      border-color: rgba(74,158,255,0.4);
+      background: rgba(74,158,255,0.05);
+    }
+
+    /* Address + map */
+    .address-block {
+      font-size: 0.97rem;
+      color: #c5bfb6;
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+    .address-block .kr {
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+    .map-frame {
+      width: 100%;
+      height: 320px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      filter: grayscale(40%) brightness(0.85) invert(0.92) hue-rotate(180deg);
+      transition: filter 0.4s;
+    }
+    .map-frame:hover {
+      filter: grayscale(0%) brightness(1) invert(0.92) hue-rotate(180deg);
+    }
+
+    /* Inquiries */
+    .inquiries-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid #4a9eff;
+      border-radius: 8px;
+      padding: 36px 40px;
+    }
+    .inquiries-card p {
+      font-size: 1rem;
+      color: #c5bfb6;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+    .inquiries-card .kr {
+      margin-top: 18px;
+      color: #888;
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container { padding: 0 1.5rem; }
+      .contact-section { padding: 3rem 0; }
+      .pi-card, .inquiries-card { padding: 28px 22px; }
+      .pi-rows { grid-template-columns: 1fr; gap: 4px 0; }
+      .pi-rows dt { padding-top: 14px; }
+      .pi-rows dt:first-of-type { padding-top: 0; }
+      .map-frame { height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;">
+        <img src="logo.png" alt="FSRL Logo"><span>FSRL</span>
+      </a>
+      <span class="lab-name">Fluid and Soft Robotics</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle">About Us</button>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">How We Work</a>
+          <a href="people.html">People</a>
+        </div>
+      </div>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-header"><h1>Contact</h1></div>
+
+  <div class="contact-container">
+
+    <!-- Principal Investigator -->
+    <section class="contact-section fade-in">
+      <h2>Principal Investigator</h2>
+      <div class="pi-card">
+        <div class="pi-name">Sohyun Jung</div>
+        <div class="pi-title">
+          Assistant Professor<br>
+          Department of Robotics and Mechatronics Engineering, DGIST
+        </div>
+        <dl class="pi-rows">
+          <dt>Email</dt>
+          <dd><a href="mailto:sohyun.jung@dgist.ac.kr">sohyun.jung@dgist.ac.kr</a></dd>
+
+          <dt>Office</dt>
+          <dd>E7 Building, Room ___<br><span style="color:#666;font-size:0.88rem;">DGIST Main Campus</span></dd>
+
+          <dt>Phone</dt>
+          <dd>+82-53-785-____</dd>
+
+          <dt>Links</dt>
+          <dd>
+            <div class="links-list">
+              <a href="#" target="_blank" rel="noopener">Google Scholar</a>
+              <a href="#" target="_blank" rel="noopener">ORCID</a>
+              <a href="#" target="_blank" rel="noopener">CV</a>
+            </div>
+          </dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Visit Us -->
+    <section class="contact-section fade-in">
+      <h2>Visit Us</h2>
+      <div class="address-block">
+        Fluid and Soft Robotics Laboratory<br>
+        Department of Robotics and Mechatronics Engineering<br>
+        DGIST, 333 Techno jungang-daero, Hyeonpung-eup,<br>
+        Dalseong-gun, Daegu 42988, Republic of Korea
+        <div class="kr">
+          대구광역시 달성군 현풍읍 테크노중앙대로 333<br>
+          대구경북과학기술원 로봇및기계전자공학과 (우 42988)
+        </div>
+      </div>
+      <iframe
+        class="map-frame"
+        src="https://maps.google.com/maps?q=DGIST%20Daegu&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="DGIST location map"></iframe>
+    </section>
+
+    <!-- Join Us / Inquiries -->
+    <section class="contact-section fade-in">
+      <h2>Inquiries</h2>
+      <div class="inquiries-card">
+        <p>
+          Prospective graduate and undergraduate students interested in joining the lab
+          are warmly invited to reach out by email. Please include a brief introduction
+          and what draws you to our research.
+        </p>
+        <p>
+          Collaboration inquiries and visiting researcher requests are also welcome.
+        </p>
+        <p class="kr">
+          저희 연구실에 관심이 있는 대학원·학부 진학 희망자는 언제든 이메일로 연락 주세요.
+          간단한 자기소개와 함께 어떤 점이 흥미로웠는지 적어주시면 됩니다.<br>
+          공동 연구 및 방문 연구 문의도 환영합니다.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-text">
+      Fluid and Soft Robotics Laboratory<br>
+      Department of Robotics and Mechatronics Engineering<br>
+      DGIST, Korea
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
